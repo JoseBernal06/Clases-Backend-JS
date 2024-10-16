@@ -1,4 +1,8 @@
-
+// node --version
+// npm -v
+// npm init --y
+// npm install express
+// npm install
 //! node --watch 'index.js'
 //  http://localhost:3000/ 
 
