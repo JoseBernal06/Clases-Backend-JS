@@ -79,7 +79,7 @@ app.get('/search', (req, res)=>{
 
 //* ejemplo 1
 
-app.get('/autos/:type_auto/acesorios/:seguridad', (req, res)=>{
+app.get('/auto/:type_auto/accesorios/:seguridad', (req, res)=>{
     const {type_auto}=req.params
     const {seguridad}=req.params
     const autos = [
@@ -105,7 +105,7 @@ app.get('/autos/:type_auto/acesorios/:seguridad', (req, res)=>{
 
 //* ejemplo 2
 
-app.get('/autos/:joy_hatchback/acesorios/:kit_confort', (req, res)=>{
+app.get('/autos/:joy_hatchback/accesorios/:kit_confort', (req, res)=>{
     const {joy_hatchback}=req.params
     const {kit_confort}=req.params
     
