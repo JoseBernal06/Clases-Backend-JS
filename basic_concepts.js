@@ -28,6 +28,7 @@ console.log("Serever ok")
 //! Request
 //* manera como se solicita la informacion 
 
+
 app.use(express.json()) //especificamos el formato
 
 app.post('/login', (req, res)=>{
@@ -118,5 +119,79 @@ app.get('/autos/:joy_hatchback/accesorios/:kit_confort', (req, res)=>{
         res.json("No hay resultados")
     }
 })
+
+
+//--------------------------------------------------------------------------------------------------------
+
+//! Responses
+// el tipo de recurso que el servidor va a devolver.
+
+// el serividor envia un texto
+app.get("/user", (req, res)=>{
+    res.send("User and admin")
+})
+
+
+// el serividor envia un archivo punto json
+app.get("/profile", (req, res)=>{
+    res.json({
+        "id":1596,
+        "name":"Mateo",
+        "age":21
+    })
+})
+
+// el serividor envia una imagen
+app.get("/avatar", (req, res)=>{
+    console.log(__dirname)
+    res.sendFile('./responses_archivos/images.jpg',{
+        root:__dirname
+    })
+})
+
+
+// el serividor envia un documento en este caso en formato PDF
+app.get("/dowlander", (req, res)=>{
+    console.log(__dirname)
+    res.sendFile('./responses_archivos/DEBER-1.pdf',{
+        root:__dirname
+    })
+})
+
+
+app.get("/landing", (req, res) => {
+    console.log(__dirname);
+    res.send(`<h1>Hola mundo</h1>`);
+});
+
+
+//------------------------------------------------------------------------------
+
+
+//! MIDDLEWARE
+// es un intermediario entre el request y responses
+
+// verifica que una API KEY se correcta
+app.use((req, res, next)=>{
+    //logica del middleware
+    // req => body - params - query
+    // res
+    // next: ejecuta la ruta
+    const {token}= req.body
+    const response = token === "123" ? true:false
+    response ? next() : res.json({
+        "msh":"No API KEY found in request"
+    })
+})
+
+
+app.get("/gifs", (req, res)=>{
+    res.send()
+})
+
+
+
+
+
 
 
