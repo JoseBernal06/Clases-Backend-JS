@@ -118,8 +118,6 @@ app.get('/autos/:joy_hatchback/acesorios/:kit_confort', (req, res)=>{
     else{
         res.json("No hay resultados")
     }
-
-
 })
 
 
